@@ -1,0 +1,1 @@
+heroku logs --tail -a monstrarium-stable

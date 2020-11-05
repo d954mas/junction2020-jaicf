@@ -1,0 +1,21 @@
+{
+  "actions": [
+    {
+      "description": "Default Welcome Intent",
+      "name": "MAIN",
+      "fulfillment": {
+        "conversationName": "welcome"
+      },
+      "intent": {
+        "name": "actions.intent.MAIN"
+      }
+    }
+  ],
+  "conversations": {
+    "welcome": {
+      "name": "welcome",
+      "url": "https://monstrarium-dev.herokuapp.com/google_actions"
+    }
+  },
+  "locale": "en"
+}
