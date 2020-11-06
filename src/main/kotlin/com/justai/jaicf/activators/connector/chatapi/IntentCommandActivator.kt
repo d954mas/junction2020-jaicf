@@ -5,6 +5,7 @@ import com.justai.jaicf.activator.ActivatorFactory
 import com.justai.jaicf.activator.intent.BaseIntentActivator
 import com.justai.jaicf.activator.intent.IntentActivatorContext
 import com.justai.jaicf.api.BotRequest
+import com.justai.jaicf.channel.googleactions.actions
 import com.justai.jaicf.context.BotContext
 
 import com.justai.jaicf.model.scenario.ScenarioModel
@@ -32,6 +33,11 @@ class IntentCommandActivator(
 
         if(text == "actions.intent.DIGITAL_PURCHASE_CHECK" || text == "actions.intent.COMPLETE_PURCHASE"){
             return ChatApiActivatorContext(text, "chatApiResult", emptyMap());
+        }
+
+        if(request.actions != null && text == "Talk to Junk Game" &&  botContext.session["sessionId"] != request.actions!!.request.sessionId) { //fix not restart in google console. Todo add check session.id
+            botContext.session["sessionId"] = request.actions!!.request.sessionId
+            return ChatApiActivatorContext(text, "actions.intent.MAIN", emptyMap());
         }
 
         if(text == "actions.intent.CANCEL"){
