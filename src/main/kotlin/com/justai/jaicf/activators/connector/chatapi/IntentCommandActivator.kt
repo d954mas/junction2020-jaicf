@@ -34,10 +34,12 @@ class IntentCommandActivator(
         if(text == "actions.intent.DIGITAL_PURCHASE_CHECK" || text == "actions.intent.COMPLETE_PURCHASE"){
             return ChatApiActivatorContext(text, "chatApiResult", emptyMap());
         }
-
-        if(request.actions != null && text.toLowerCase() == "Talk to Junk Game".toLowerCase() &&  botContext.session["sessionId"] != request.actions!!.request.sessionId) { //fix not restart in google console. Todo add check session.id
+        println("sessionId")
+        println(botContext.session["sessionId"])
+        println(request.actions!!.request.sessionId)
+        if(request.actions != null && text.toLowerCase() == "talk to junk game".toLowerCase() &&  botContext.session["sessionId"] != request.actions!!.request.sessionId) { //fix not restart in google console. Todo add check session.id
             botContext.session["sessionId"] = request.actions!!.request.sessionId
-            return ChatApiActivatorContext(text, "actions.intent.MAIN", emptyMap());
+            return ChatApiActivatorContext(text, "main.welcome", emptyMap());
         }
 
         if(text == "actions.intent.CANCEL"){
