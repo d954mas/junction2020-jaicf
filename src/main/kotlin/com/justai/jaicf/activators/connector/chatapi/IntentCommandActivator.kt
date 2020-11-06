@@ -37,6 +37,7 @@ class IntentCommandActivator(
         println("sessionId")
         println(botContext.session["sessionId"])
         println(request.actions!!.request.sessionId)
+        println(text.toLowerCase())
         if(request.actions != null && text.toLowerCase() == "talk to junk game".toLowerCase()
             //&&  botContext.session["sessionId"] != request.actions!!.request.sessionId
         ) { //fix not restart in google console. Todo add check session.id
