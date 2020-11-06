@@ -33,12 +33,12 @@ val templateBot = BotEngine(
     contextManager = contextManager,
     activators = arrayOf(
         IntentCommandActivator,
-     //   ChatApiActivator.Factory(
-        //    ChatApiSettings(
-         //       Config.JAICP_EN,
-        //        Config.JAICP_RU
-        //    )
-      //  ),
+        ChatApiActivator.Factory(
+            ChatApiSettings(
+                Config.JAICP_EN,
+                Config.JAICP_RU
+            )
+        ),
         CatchAllActivator
     )
 )
