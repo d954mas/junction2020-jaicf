@@ -41,6 +41,7 @@ class IntentCommandActivator(
             botContext.session["sessionId"] = request.actions!!.request.sessionId
             return ChatApiActivatorContext(text, "main.welcome", emptyMap());
         }
+        botContext.session["sessionId"] = request.actions!!.request.sessionId
 
         if(text == "actions.intent.CANCEL"){
             return ChatApiActivatorContext("main.game_exit", "chatApiResult", emptyMap());
