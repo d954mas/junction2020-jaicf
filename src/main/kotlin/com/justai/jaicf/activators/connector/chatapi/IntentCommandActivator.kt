@@ -35,7 +35,7 @@ class IntentCommandActivator(
             return ChatApiActivatorContext(text, "chatApiResult", emptyMap());
         }
 
-        if(request.actions != null && text == "Talk to Junk Game" &&  botContext.session["sessionId"] != request.actions!!.request.sessionId) { //fix not restart in google console. Todo add check session.id
+        if(request.actions != null && text.toLowerCase() == "Talk to Junk Game".toLowerCase() &&  botContext.session["sessionId"] != request.actions!!.request.sessionId) { //fix not restart in google console. Todo add check session.id
             botContext.session["sessionId"] = request.actions!!.request.sessionId
             return ChatApiActivatorContext(text, "actions.intent.MAIN", emptyMap());
         }
