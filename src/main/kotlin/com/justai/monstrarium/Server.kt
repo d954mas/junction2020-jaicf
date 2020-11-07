@@ -20,7 +20,7 @@ import kotlinx.serialization.ImplicitReflectionSerializer
 import org.slf4j.LoggerFactory
 import shared.Configs
 import shared.Shared
-import shared.project.prototypes.Regions
+
 
 @ImplicitReflectionSerializer
 fun main() {
