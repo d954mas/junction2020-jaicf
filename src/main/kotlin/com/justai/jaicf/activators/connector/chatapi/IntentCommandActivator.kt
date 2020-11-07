@@ -44,7 +44,7 @@ class IntentCommandActivator(
         if (Intents.isIntent(name)) {
             if (parts.size > 1) {
                 when (name) {
-                   // "map.select_level" -> slots = mutableMapOf("level" to parts[1])
+                    "level.spawn.unit" -> slots = mutableMapOf("unit" to parts[1])
                 }
             }
 
