@@ -63,6 +63,7 @@ class IntentCommandActivator(
                         if (parts.size > 2) slots["amount"] = parts[2]
                     }
                     "main.help" -> slots = mutableMapOf("question" to parts[1])
+                    "level.cast" -> slots = mutableMapOf("spell" to parts[1])
                 }
             }
 
