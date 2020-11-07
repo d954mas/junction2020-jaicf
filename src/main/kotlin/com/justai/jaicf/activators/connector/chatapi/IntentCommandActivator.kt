@@ -5,6 +5,7 @@ import com.justai.jaicf.activator.ActivatorFactory
 import com.justai.jaicf.activator.intent.BaseIntentActivator
 import com.justai.jaicf.activator.intent.IntentActivatorContext
 import com.justai.jaicf.api.BotRequest
+import com.justai.jaicf.channel.googleactions.actions
 import com.justai.jaicf.context.BotContext
 
 import com.justai.jaicf.model.scenario.ScenarioModel
@@ -33,6 +34,19 @@ class IntentCommandActivator(
         if(text == "actions.intent.DIGITAL_PURCHASE_CHECK" || text == "actions.intent.COMPLETE_PURCHASE"){
             return ChatApiActivatorContext(text, "chatApiResult", emptyMap());
         }
+       // println("sessionId")
+       // println(botContext.session["sessionId"])
+       // println(request.actions!!.request.sessionId)
+       // println(text.toLowerCase())
+       // println(request.actions != null && text.toLowerCase() == "talk to junk game".toLowerCase())
+        // Плохо работает чтото на стороне гугла.Не начинает новую сессию
+        if(request.actions != null && text.toLowerCase() == "talk to junk game".toLowerCase()
+            //&&  botContext.session["sessionId"] != request.actions!!.request.sessionId
+        ) { //fix not restart in google console. Todo add check session.id
+           // botContext.session["sessionId"] = request.actions!!.request.sessionId
+           // return ChatApiActivatorContext("main.welcome", "chatApiResult", emptyMap());
+        }
+        botContext.session["sessionId"] = request.actions!!.request.sessionId
 
         if(text == "actions.intent.CANCEL"){
             return ChatApiActivatorContext("main.game_exit", "chatApiResult", emptyMap());
